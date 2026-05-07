@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0b0f19;
+  --color-brand-surface: rgba(15, 23, 42, 0.4);
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+  
+  --font-sans: 'Inter', sans-serif;
+  
+  --animate-blob: blob 10s infinite alternate;
+  --animate-blob-reverse: blob-reverse 12s infinite alternate;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-brand-surface backdrop-blur-xl border border-brand-border;
+  }
+  
+  .glass-card {
+    @apply bg-[rgba(15,23,42,0.6)] backdrop-blur-2xl border border-[rgba(255,255,255,0.05)] rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.15)] hover:border-[rgba(0,242,254,0.3)] hover:-translate-y-2;
+  }
+  
+  .glow-text {
+    @apply text-white text-shadow-[0_0_20px_rgba(255,255,255,0.3)];
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes blob-reverse {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 50px) scale(1.2);
+  }
+  66% {
+    transform: translate(20px, -20px) scale(0.8);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+body {
+  @apply bg-brand-bg text-slate-300 font-sans antialiased overflow-x-hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+html {
+  scroll-behavior: smooth;
+}
